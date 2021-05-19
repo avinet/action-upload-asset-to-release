@@ -1,0 +1,13 @@
+name: "npm publish pre-release for pull request"
+description: "Publishes a pre-release version from pull request"
+branding:
+  icon: box
+  color: blue
+author: "Asplan Viak"
+inputs:
+  file:
+    description: "File name"
+    required: true
+runs:
+  using: "node12"
+  main: "dist/index.js"
