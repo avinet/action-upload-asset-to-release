@@ -46,7 +46,7 @@ async function run() {
         headers: {
           "content-type": "application/zip",
         },
-        data: fs.readFileSync(filePath).toString(),
+        data: fs.readFileSync(filePath) as unknown as string,
         name: fileName,
       });
       core.debug(`Asset uploaded: ${response.data.name}`);
