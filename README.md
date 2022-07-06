@@ -6,7 +6,9 @@ Usage:
 
 ```yaml
 - name: Upload asset to release
-  uses: avinet/action-upload-asset-to-release@v1
+  uses: avinet/action-upload-asset-to-release@v3
+  with:
+    file: ./path/to/file.ext
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```

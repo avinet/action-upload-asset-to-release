@@ -1,5 +1,5 @@
-name: "npm publish pre-release for pull request"
-description: "Publishes a pre-release version from pull request"
+name: "Upload asset to Github release"
+description: "Uploads an asset to a Github release. Use on release trigger."
 branding:
   icon: box
   color: blue
@@ -9,5 +9,5 @@ inputs:
     description: "File name"
     required: true
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"

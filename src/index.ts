@@ -1,6 +1,5 @@
 import * as github from "@actions/github";
 import * as core from "@actions/core";
-import * as Webhooks from "@octokit/webhooks";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -14,8 +13,7 @@ async function run() {
       return;
     }
 
-    const payload =
-      context.payload as Webhooks.EventPayloads.WebhookPayloadRelease;
+    const payload = context.payload;
 
     switch (payload.action) {
       case "published":
@@ -39,7 +37,7 @@ async function run() {
       const owner = github.context.repo.owner;
       const repo = github.context.repo.repo;
 
-      const response = await client.repos.uploadReleaseAsset({
+      const response = await client.rest.repos.uploadReleaseAsset({
         owner,
         repo,
         release_id: payload.release.id,
@@ -51,7 +49,7 @@ async function run() {
       });
       core.debug(`Asset uploaded: ${response.data.name}`);
     }
-  } catch (err) {
+  } catch (err: any) {
     core.setFailed(err.message);
   }
 }
